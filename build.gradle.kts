@@ -20,10 +20,19 @@ repositories {
 }
 
 dependencies {
+    // Kotlin
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    // Spring
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    // AWS Messaging
+    implementation(platform("io.awspring.cloud:spring-cloud-aws-dependencies:3.0.1"))
+    implementation("io.awspring.cloud:spring-cloud-aws-starter-sqs")
+    implementation("io.awspring.cloud:spring-cloud-aws-starter-sns")
+
     runtimeOnly("com.h2database:h2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
