@@ -10,16 +10,19 @@ import software.amazon.awssdk.services.sns.model.PublishRequest
 
 @Component
 class AwsSnsMessagePublisher(
-    @Value("\${spring.cloud.aws.sns.topic.arn}")
-    private val snsTopicARN: String,
     private val snsClient: SnsClient,
 ) : EventMessagePublisher {
+
+    @Value("\${foo.aws.sns.topic.arn}")
+    lateinit var snsTopicARN: String
 
     override fun publish(payload: EventMessagingPayload) {
         snsClient.publish(
             PublishRequest.builder()
                 .topicArn(snsTopicARN)
-                .subject("sns 전송 테스트")
+                .subject("sns message subject")
+                .messageGroupId("")
+                .messageDeduplicationId("")
                 .message(JsonUtils.serialize(payload))
                 .build()
         )

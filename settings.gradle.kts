@@ -1,1 +1,1 @@
-rootProject.name = "practice-distributed-tx"
+rootProject.name = "practice-event-based-arch-with-messaging"

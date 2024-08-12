@@ -9,14 +9,16 @@ import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.sqs.SqsAsyncClient
 
 @Configuration
-class AwsSqsConfiguration(
+class AwsSqsConfiguration {
+
     @Value("\${spring.cloud.aws.credentials.access-key}")
-    private val awsAccessKey: String,
+    lateinit var awsAccessKey: String
+
     @Value("\${spring.cloud.aws.credentials.secret-key}")
-    private val awsSecretKey: String,
+    lateinit var awsSecretKey: String
+
     @Value("\${spring.cloud.aws.region.static}")
-    private val awsRegion: String,
-) {
+    lateinit var awsRegion: String
 
     @Bean
     fun sqsAsyncClient(): SqsAsyncClient {

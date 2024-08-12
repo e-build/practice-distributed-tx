@@ -57,7 +57,6 @@ class EventMessageBroadcaster(
                     }
                 }
             }
-
             TODO("Failover 정책 구현 필요, 비동기 실행 구현 필요")
         }
     }
